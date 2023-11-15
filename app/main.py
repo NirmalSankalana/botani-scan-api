@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from . import models
+from .database import engine, get_db
+from .config import settings
 
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
 
 @app.get("/")
 async def root():
