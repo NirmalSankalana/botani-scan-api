@@ -22,7 +22,7 @@ class Crop(Base):
     description = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    image_id = Column(Integer, nullable=False)
+    image_id = Column(String, nullable=False)
 
 
 class Disease(Base):
@@ -30,7 +30,7 @@ class Disease(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     title = Column(String, nullable=False)
     description = Column(String, nullable=False)
-    image_id = Column(Integer, nullable=False)
+    image_id = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     crop_id = Column(Integer, ForeignKey(
@@ -45,7 +45,7 @@ class Remedy(Base):
     description = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    image_id = Column(Integer, nullable=False)
+    image_id = Column(String)
     disease_id = Column(Integer, ForeignKey(
         "diseases.id", ondelete="CASCADE"), nullable=False)
     disease = relationship("Disease")  # Fetches relationship data for us
