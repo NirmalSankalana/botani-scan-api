@@ -13,16 +13,25 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[crop_schema.Crop])
-def get_posts(db: Session = Depends(get_db), limit: int = 40, skip: int = 0, search: Optional[str] = ""):
+def get_crops(db: Session = Depends(get_db), limit: int = 40, skip: int = 0, search: Optional[str] = ""):
     crops = db.query(models.Crop).filter(
         models.Crop.title.contains(search)).limit(limit).offset(skip).all()
     return crops
 
 
 @router.get("/{id}", response_model=crop_schema.Crop)
-def get_post(id: int, db: Session = Depends(get_db)):
+def get_crop(id: int, db: Session = Depends(get_db)):
     crop = db.query(models.Crop).filter(models.Crop.id == id).first()
     if crop == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"crop with {id} does not exists.")
     return crop
+
+
+@router.post("/", response_model=crop_schema.Crop)
+def create_crop(crop: crop_schema.CropCreate, db: Session = Depends(get_db)):
+    new_crop = models.Crop(**crop.dict())
+    db.add(new_crop)
+    db.commit()
+    db.refresh(new_crop)
+    return new_crop

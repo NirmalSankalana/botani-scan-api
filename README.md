@@ -14,6 +14,8 @@ Resnet-50 is used as the baseline model. Weights of resnet finetuned using 10 da
 | PlantVillage                 | 54303         | 38            | [PlantVillage](https://www.tensorflow.org/datasets/catalog/plant_village)             | David P. Hughes and Marcel Salath                                                            |
 | Potato Leaf Disease          | 4072          | 3             | [Potato Leaf Disease](https://www.mdpi.com/2079-9292/10/17/2064)                      | images collected from the Central Punjab region of Pakistan                                  |
 
+### Model Performance
+
 ## How to set up the project.
 
 ### Create environment
