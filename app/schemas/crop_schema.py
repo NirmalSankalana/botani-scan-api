@@ -18,4 +18,4 @@ class Crop(CropBase):
     # Ensure creating ORM friendly schema
 
     class Config:
-        orm_mode = True
+        from_attributes = True
