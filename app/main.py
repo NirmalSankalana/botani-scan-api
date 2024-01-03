@@ -6,6 +6,7 @@ from .config import settings
 
 from .routes import crop_routes
 from .routes import seed_routes
+from .routes import prediction_routes
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -24,3 +25,4 @@ async def test():
 
 app.include_router(crop_routes.router)
 app.include_router(seed_routes.router)
+app.include_router(prediction_routes.router)
