@@ -27,6 +27,7 @@ Efficient Net is used as the baseline model. Weights of Efficient Net finetuned 
 1. Authentication(user/ admin)
 1. Get/ Post/ Put/ Delete Crops
 1. Get/ Post/ Put/ Delete Diseases
+1. Get/ Post/ Put/ Delete Users
 1. Get Predictions
 
 ## How to set up the project.
