@@ -1,4 +1,6 @@
-# BotaniScan Api
+# BotaniScan API
+
+BotaniScan API is a REST API that provides a simple interface for recognise diseases of plants using images.
 
 ## Model
 
