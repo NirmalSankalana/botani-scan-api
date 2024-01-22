@@ -29,6 +29,7 @@ def verify_access_token(token: str, credentials_exception):
         token_data = util_schema.TokenData(id=id)
     except JWTError:
         raise credentials_exception
+    return token_data
 
 
 def get_current_user(token: str = Depends(oath2_scheme)):
