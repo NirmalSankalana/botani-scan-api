@@ -13,7 +13,7 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[crop_schema.Crop])
-def get_crops(user_id: int = Depends(oath2.get_current_user), db: Session = Depends(get_db), limit: int = 40, skip: int = 0, search: Optional[str] = ""):
+def get_crops(current_user: int = Depends(oath2.get_current_user), db: Session = Depends(get_db), limit: int = 40, skip: int = 0, search: Optional[str] = ""):
     crops = db.query(models.Crop).filter(
         models.Crop.title.contains(search)).limit(limit).offset(skip).all()
     return crops
