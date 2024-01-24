@@ -20,7 +20,7 @@ def get_crops(current_user: int = Depends(oath2.get_current_user), db: Session =
 
 
 @router.get("/{id}", response_model=crop_schema.Crop)
-def get_crop(id: int, db: Session = Depends(get_db)):
+def get_crop(id: int, db: Session = Depends(get_db), current_user: int = Depends(oath2.get_current_user)):
     crop = db.query(models.Crop).filter(models.Crop.id == id).first()
     if crop == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -29,7 +29,8 @@ def get_crop(id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/", response_model=crop_schema.Crop)
-def create_crop(crop: crop_schema.CropCreate, db: Session = Depends(get_db)):
+def create_crop(crop: crop_schema.CropCreate, db: Session = Depends(get_db), current_user_role: str = Depends(oath2.get_current_user_role)):
+    oath2.has_required_role("admin", current_user_role)
     new_crop = models.Crop(**crop.dict())
     db.add(new_crop)
     db.commit()

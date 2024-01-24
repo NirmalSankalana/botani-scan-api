@@ -24,8 +24,8 @@ Efficient Net is used as the baseline model. Weights of Efficient Net finetuned 
 ### Features
 
 - [x] Login/ SignUp
-- [ ] Password hashing
-- [ ] Authentication(user/ admin)
+- [x] Password hashing
+- [x] Authentication(user/ admin)
 - [ ] Get/ Post/ Put/ Delete Crops
 - [ ] Get/ Post/ Put/ Delete Diseases
 - [x] Get/ Post/ Put/ Delete Users

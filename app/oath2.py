@@ -46,7 +46,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
 
 
 def get_current_user_role(current_user: User = Depends(get_current_user)):
-    return current_user.role
+    return current_user.user_type
 
 
 def has_required_role(required_role: str = "user", current_user_role: str = Depends(get_current_user_role)):
